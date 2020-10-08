@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+    postgres:
+        container_name: Postgres-10.5
+        
+        image: postgres:10.5-alpine
+        restart: unless-stopped
+
+        volumes:
+            - /home/cgwire/postgresql/data:/var/lib/postgresql/data
+
+    redis:
+        container_name: Redis
+
+        image: redis:alpine
+        restart: unless-stopped
+
+
+    
+    cgwire:
+        container_name: CGWire
+
+        image: cgwire:latest
+        restart: unless-stopped
+        
+        depends_on:
+            - postgres
+            - redis
+        
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_USERNAME=cgwire_db_user
+            - DB_PASSWORD=password
+            - DB_DATABASE=cgwire_db
+
+            - KV_HOST=redis
+            - KV_PORT=6379
+
+            - PREVIEW_FOLDER=./previews
+
+            - LC_ALL=C.UTF-8
+            - LANG=C.UTF-8
+
+        ports:
+            - '80:80'
+               
