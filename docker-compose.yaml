@@ -38,7 +38,7 @@ services:
             - KV_HOST=redis
             - KV_PORT=6379
 
-            - PREVIEW_FOLDER=./previews
+            - PREVIEW_FOLDER=/opt/zou/previews
 
             - LC_ALL=C.UTF-8
             - LANG=C.UTF-8
