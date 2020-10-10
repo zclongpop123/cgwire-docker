@@ -43,3 +43,22 @@
    ```
    \password cgwire_db_user;
    ```
+   
+- Init Database
+  ```
+  /opt/zou/env/bin/zou init_db
+  ```
+  ```
+  /opt/zou/env/bin/zou init_data
+  ```
+- Add Admin User
+  ```
+  /opt/zou/env/bin/zou create_admin your_email@email.com
+  ```
+- Login
+  ```
+  http://your-cgwire-host.com
+  
+  Username: your_email@email.com
+  Password: default
+  ```
