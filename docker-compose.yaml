@@ -10,6 +10,7 @@ services:
         volumes:
             - /home/cgwire/postgresql/data:/var/lib/postgresql/data
 
+
     redis:
         container_name: Redis
 
