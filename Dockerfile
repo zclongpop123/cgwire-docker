@@ -7,8 +7,8 @@ USER root
 RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list &&\
     sed -i 's/security.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 
-RUN apt-get update && apt-get install --no-install-recommends -y software-properties-common
-RUN apt-get update && apt-get install --no-install-recommends -q -y \
+RUN apt-get update && apt-get install --no-install-recommends -y software-properties-common &&\
+    apt-get update && apt-get install --no-install-recommends -q -y \
     bzip2 \
     ffmpeg \
     git \
@@ -30,8 +30,6 @@ RUN python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U &&
 RUN mkdir -p /opt/zou /var/log/zou /opt/zou/previews
 
 RUN git clone -b build --single-branch --depth 1 https://gitee.com/zclongpop123/kitsu.git /opt/zou/kitsu
-
-WORKDIR /opt/zou/zou
 
 RUN python3 -m venv /opt/zou/env && \
     /opt/zou/env/bin/pip install --upgrade pip setuptools wheel && \
