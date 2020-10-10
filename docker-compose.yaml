@@ -2,10 +2,13 @@ version: '3'
 
 services:
     postgres:
-        container_name: Postgres-10.5
+        container_name: Postgres-9.6
         
-        image: postgres:10.5-alpine
+        image: postgres:9.6-alpine
         restart: unless-stopped
+
+        environment:
+            - POSTGRES_PASSWORD=password
 
         volumes:
             - /home/cgwire/postgresql/data:/var/lib/postgresql/data
@@ -35,6 +38,7 @@ services:
             - DB_USERNAME=cgwire_db_user
             - DB_PASSWORD=password
             - DB_DATABASE=cgwire_db
+            - SECRET_KEY=yourrandomsecretkey
 
             - KV_HOST=redis
             - KV_PORT=6379
