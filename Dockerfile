@@ -24,8 +24,8 @@ RUN apt-get update && apt-get install --no-install-recommends -q -y \
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U &&\
-    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U &&\
+    python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN mkdir -p /opt/zou /var/log/zou /opt/zou/previews
 
@@ -34,7 +34,6 @@ RUN git clone -b build --single-branch --depth 1 https://gitee.com/zclongpop123/
 WORKDIR /opt/zou/zou
 
 RUN python3 -m venv /opt/zou/env && \
-    # Python 2 needed for supervisord
     /opt/zou/env/bin/pip install --upgrade pip setuptools wheel && \
     /opt/zou/env/bin/pip install zou && \
     rm -rf /root/.cache/pip/
