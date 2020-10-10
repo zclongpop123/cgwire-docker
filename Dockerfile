@@ -41,8 +41,8 @@ RUN python3 -m venv /opt/zou/env && \
 
 WORKDIR /opt/zou
 
-COPY ./gunicorn /etc/zou/gunicorn.conf
-COPY ./gunicorn-events /etc/zou/gunicorn-events.conf
+COPY ./gunicorn.conf /etc/zou/gunicorn.conf
+COPY ./gunicorn-events.conf /etc/zou/gunicorn-events.conf
 
 COPY ./nginx.conf /etc/nginx/sites-available/zou
 RUN ln -s /etc/nginx/sites-available/zou /etc/nginx/sites-enabled/
