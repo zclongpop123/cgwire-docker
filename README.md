@@ -35,7 +35,7 @@
    CREATE USER cgwire_db_user;
    ```
    ```
-   CREATE DATABASE cgwire;
+   CREATE DATABASE cgwire_db;
    ```
    ```
    GRANT ALL PRIVILEGES ON DATABASE cgwire_db TO cgwire_db_user;
